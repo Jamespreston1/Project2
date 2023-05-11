@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block styles %}
+ 
+{% endblock %}
+
+{% block content %}
+    <h1>Appointment View</h1>
+
+    <table id="meeting_table">
+		<tr>
+			<th>Meeting Time</th>
+			<th>Owner Name</th>
+			<th>Meeting Subject</th>
+			<th>Location</th>
+			<th>Attendees</th>
+            <th>Edit</th>
+            <th>Delete</th>
+		</tr>   
+{%for meeting in meetings %} 
+<tr>
+    <td>{{meeting.Meeting_time}}</td>
+    <td>{{meeting.Owner_name}}</td>
+    <td>{{meeting.Meeting_subject}}</td>
+    <td>{{meeting.Location}}</td>
+    <td>{{meeting.Attendees}}</td>
+    <td><a href="/meetings/edit/{{meeting.meeting_id}}">Edit </a> </td>
+    <td><a href="/meetings/delete/{{meeting.meeting_id}}">Delete </a> </td>
+    
+</tr>
+{%endfor%}
+    
+</table>
+<style> 
+h1 {
+color: black;
+
+}
+
+body {
+background-color: aquamarine;
+font-family: 'Courier New';
+}
+</style>
+{% endblock %}
