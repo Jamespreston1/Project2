@@ -1,0 +1,35 @@
+{%extends "base.html"%}
+{%block title%}New Appointment{%endblock%}
+
+{%block content%}
+  <form action="/meetings/edit/{{meeting.meeting_id}}" method="POST">
+   
+    <label for="owner_name">Owner Name:</label>
+    <input type="text" name="owner_name" value="{{ meeting.Owner_name | default('') }}">
+    <br>
+    <label for="meeting_subject">Meeting Subject:</label>
+    <input type="text" name="meeting_subject" value="{{ meeting.Meeting_subject | default('') }}">
+    <br>
+    <label for="meeting_time">Meeting Time:</label>
+    <input type="text" name="meeting_time" value="{{ meeting.Meeting_time | default('') }}">
+    <br>
+    <label for="location">Location:</label>
+    <input type="text" name="location" value="{{ meeting.Location | default('') }}">
+    <br>
+    <label for="attendees">Attendees:</label>
+    <input type="text" name="attendees" value="{{ meeting.Attendees | default('') }}">
+    <br>
+    <input type="submit" value="Update Meeting">
+  </form>
+
+  <style> 
+    h1 {
+    color: black;
+    }
+    
+    body {
+    background-color: aquamarine;
+    font-family: 'Courier New';
+    }
+    </style>
+  {% endblock %}

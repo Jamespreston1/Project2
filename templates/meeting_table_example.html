@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meeting Details Table</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		th, td {
+			text-align: left;
+			padding: 8px;
+			border-bottom: 1px solid #ddd;
+		}
+		th {
+			background-color: #f2f2f2;
+		}
+	</style>
+    <link rel="stylesheet" type="text/css" href="/Users/jamespreston/sei-course/classwork/unit1/ZProjects/Project_2/Project2/templates/styles.css">
+
+	<script>
+		function filterTable() {
+			var filter = document.getElementById("owner_filter").value.toUpperCase();
+			var table = document.getElementById("meeting_table");
+			var rows = table.getElementsByTagName("tr");
+			var meetingData = [];
+
+			for (var i = 1; i < rows.length; i++) {
+				var cells = rows[i].getElementsByTagName("td");
+				var rowData = [];
+				for (var j = 0; j < cells.length; j++) {
+					rowData.push(cells[j].textContent);
+				}
+				meetingData.push(rowData);
+			}
+
+			meetingData.sort(function(a, b) {
+				var dateA = new Date(a[0]);
+				var dateB = new Date(b[0]);
+				return dateA - dateB;
+			});
+
+			for (var i = 1; i < rows.length; i++) {
+				rows[i].innerHTML = "";
+				for (var j = 0; j < meetingData[i-1].length; j++) {
+					var cell = document.createElement("td");
+					cell.textContent = meetingData[i-1][j];
+					rows[i].appendChild(cell);
+				}
+				var cells = rows[i].getElementsByTagName("td")[1];
+				if (cells) {
+					var ownerName = cells.textContent.toUpperCase();
+					if (ownerName.indexOf(filter) > -1 || filter === "") {
+						rows[i].style.display = "";
+					} else {
+						rows[i].style.display = "none";
+					}
+				}
+			}
+			document.getElementsByTagName("h1")[0].textContent = "Meeting Calendar for " + filter;
+		}
+	</script>
+	<h1>Meeting Calendar</h1>
+</head>
+<body>
+	<form>
+		<label for="owner_filter">Filter by Owner:</label>
+		<select id="owner_filter" name="owner_filter" onchange="filterTable()">
+			<option value="">-- Select Owner --</option>
+			<option value="James Preston">James Preston</option>
+			<option value="Vishal Dogra">Vishal Dogra</option>
+			<option value="Emily Wong">Emily Wong</option>
+			<option value="Samantha Jones">Samantha Jones</option>
+		</select>
+	</form>
+	<br>
+	<table id="meeting_table">
+		<tr>
+			<th>Meeting Time</th>
+			<th>Owner Name</th>
+			<th>Meeting Subject</th>
+			<th>Location</th>
+			<th>Attendees</th>
+		</tr>
+		<tr>
+			<td>18:00 09/05/2023</td>
+			<td>James Preston</td>
+			<td>Project 2 help</td>
+			<td>Meeting Room 2</td>
+			<td>James, Vishal Dogra</td>
+		</tr>
+		<tr>
+			<td>10:00 10/05/2023</td>
+			<td>Vishal Dogra</td>
+			<td>Project 2 status update</td>
+		

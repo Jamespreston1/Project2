@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block content %}
+<body>
+    <h2>Login Form</h2>
+    <form method="POST" action="/login">
+        <label for="email">email</label><br>
+        <input id="email" type="text" name="email" required><br>
+        <label for="password">Password</label><br>
+        <input id="password" type="password" name="password" required><br>
+        {% if error %}
+        {{error}}
+        {% endif %}
+        <input type="submit" value="Login">
+    </form>
+</body>
+<style>
+
+body {
+    background-color: turquoise;
+}
+
+</style>
+{% endblock %}

@@ -1,0 +1,45 @@
+{%extends "base.html"%}
+{%block title%}New Appointment{%endblock%}
+
+{%block content%}
+  <form action="/meetings/new" method="POST">
+    
+    <label for="owner_name">Owner Name:</label>
+    <input type="text" name="owner_name" value="{{ meeting.owner_name | default('') }}">
+    <br>
+    <label for="meeting_subject">Meeting Subject:</label>
+    <input type="text" name="meeting_subject" value="{{ meeting.meeting_subject | default('') }}">
+    <br>
+    <label for="meeting_time">Meeting Time:</label>
+    <input type="text" name="meeting_time" value="{{ meeting.meeting_time | default('') }}">
+    <br>
+    <label for="location">Location:</label>
+    <input type="text" name="location" value="{{ meeting.location | default('') }}">
+    <br>
+    <label for="attendees">Attendees:</label>
+    <input type="text" name="attendees" value="{{ meeting.attendees | default('') }}">
+    <br>
+    <input type="submit" value="Update Meeting">
+  </form>
+  <style>
+    body {
+      background-color: aquamarine;
+    }
+
+    input[type="text"],
+    label,
+    input[type="submit"] 
+    {
+      font-size: 15px;
+      font-family: 'Courier New';
+    }
+
+    p {
+        font-size: 15px;
+        font-family: 'Courier New';
+    }
+  </style>
+
+<p><em>After you hit 'Update Meeting', you'll be redirected  back to the home page!</em></p>
+<p> <em>Note: For "Location" you must select "Meeting Room 1, Meeting Room 2, Meeting Room 3, Meeting Room 4 or Meeting Room 5"</em></p>
+{%endblock%}

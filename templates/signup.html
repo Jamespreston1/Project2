@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block content %}
+<body>
+    <h2>Signup Form</h2>
+    <form method="POST">
+        <label for="first_name">First Name</label><br>
+        <input id="first_name" type="text" name="first_name" required><br>
+        <label for="last_name">Last Name</label><br>
+        <input id="last_name" type="text" name="last_name" required><br>
+        <label for="email">Email</label><br>
+        <input id="email" type="email" name="email" required><br>
+        <label for="password">Password</label><br>
+        <input id="password" type="password" name="password" required><br>
+        <label for="confirm_password">Confirm Password</label><br>
+        <input id="confirm_password" type="password" name="confirm_password" required><br>
+        <input type="submit" value="Signup">
+    </form>
+</body>
+
+<style>
+
+body {
+    background-color: turquoise;
+}
+
+</style>
+{% endblock %}
+
+
+
+
+
