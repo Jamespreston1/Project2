@@ -2,20 +2,30 @@
 {% block title %} Home {% endblock %}
 
 {% block styles %}
- 
+<style>
+    /* Add the CSS example here */
+    body {
+        background-image: url("/Users/jamespreston/sei-course/classwork/unit1/ZProjects/Project_2/Project2/templates/Bloomberg_LDN_12_Interior_Pantry-1024x709.jpeg");
+        background-size: cover;
+        font-family: 'Courier New';
+        padding: 20px;
+    }
+
+    .textbox {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .textbox p {
+        margin-bottom: 10px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-  <p> <strong>Welcome to your Calendar Homepage! </strong></p>
-  <p> <em> Keeping a calendar is important because it helps us stay organized and manage our time effectively. As early as 4236 BC, the ancient Egyptians used a calendar to mark the flooding of the Nile River, which helped them plan their agricultural activities. <br> <br> Julius Caesar, the Roman leader, introduced the Julian calendar in 45 BC, which became the basis for the modern-day Gregorian calendar. <br> <br> Benjamin Franklin once said, "Time is money." And the famous author, Charles Buxton, stated, "You will never 'find' time for anything. If you want time, you must make it." So, keeping a calendar not only helps us stay on top of our schedules but also teaches us the value of time management. </em> </p>
-
-  <style>
-    body {
-      background-color: aquamarine;
-      font-size: 15px;
-      font-family: 'Courier New';
-    
-    }
-    
-  </style>
-  {% endblock %}
+<div class="textbox">
+    <p><strong>Welcome to your Calendar Homepage!</strong></p>
+    <p><em>Keeping a calendar is important because it helps us stay organized and manage our time effectively. As early as 4236 BC, the ancient Egyptians used a calendar to mark the flooding of the Nile River, which helped them plan their agricultural activities.<br><br>Julius Caesar, the Roman leader, introduced the Julian calendar in 45 BC, which became the basis for the modern-day Gregorian calendar.<br><br>Benjamin Franklin once said, "Time is money." And the famous author, Charles Buxton, stated, "You will never 'find' time for anything. If you want time, you must make it." So, keeping a calendar not only helps us stay on top of our schedules but also teaches us the value of time management.</em></p>
+</div>
+{% endblock %}
