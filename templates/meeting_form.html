@@ -27,24 +27,23 @@
     <input type="submit" value="Update Meeting">
   </form>
   <style>
-    /* Add the CSS example here */
     body {
-        background-image: url("/Users/jamespreston/sei-course/classwork/unit1/ZProjects/Project_2/Project2/templates/Bloomberg_LDN_12_Interior_Pantry-1024x709.jpeg");
-        background-size: cover;
+      background-color: aquamarine;
+    }
+
+    input[type="text"],
+    label,
+    input[type="submit"] 
+    {
+      font-size: 15px;
+      font-family: 'Courier New';
+    }
+
+    p {
+        font-size: 15px;
         font-family: 'Courier New';
-        padding: 20px;
     }
-
-    .textbox {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 20px;
-        border-radius: 10px;
-    }
-
-    .textbox p {
-        margin-bottom: 10px;
-    }
-</style>
+  </style>
 
 <p><em>After you hit 'Update Meeting', you'll be redirected back to the home page!</em></p>
-
+{% endblock %}
