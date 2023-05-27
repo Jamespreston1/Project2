@@ -1,9 +1,8 @@
-{%extends "base.html"%}
-{%block title%}New Appointment{%endblock%}
+{% extends "base.html" %}
+{% block title %}New Appointment{% endblock %}
 
-{%block content%}
+{% block content %}
   <form action="/meetings/new" method="POST">
-    
     <label for="owner_name">Owner Name:</label>
     <input type="text" name="owner_name" value="{{ meeting.owner_name | default('') }}">
     <br>
@@ -14,7 +13,13 @@
     <input type="text" name="meeting_time" value="{{ meeting.meeting_time | default('') }}">
     <br>
     <label for="location">Location:</label>
-    <input type="text" name="location" value="{{ meeting.location | default('') }}">
+    <select name="location">
+      <option value="Meeting Room 1">Meeting Room 1</option>
+      <option value="Meeting Room 2">Meeting Room 2</option>
+      <option value="Meeting Room 3">Meeting Room 3</option>
+      <option value="Meeting Room 4">Meeting Room 4</option>
+      <option value="Meeting Room 5">Meeting Room 5</option>
+    </select>
     <br>
     <label for="attendees">Attendees:</label>
     <input type="text" name="attendees" value="{{ meeting.attendees | default('') }}">
@@ -40,6 +45,6 @@
     }
   </style>
 
-<p><em>After you hit 'Update Meeting', you'll be redirected  back to the home page!</em></p>
-<p> <em>Note: For "Location" you must select "Meeting Room 1, Meeting Room 2, Meeting Room 3, Meeting Room 4 or Meeting Room 5"</em></p>
-{%endblock%}
+<p><em>After you hit 'Update Meeting', you'll be redirected back to the home page!</em></p>
+<p> <em>Note: For "Location" you must select "Meeting Room 1, Meeting Room 2, Meeting Room 3, Meeting Room 4, or Meeting Room 5"</em></p>
+{% endblock %}
