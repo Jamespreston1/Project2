@@ -10,7 +10,7 @@
     <input type="text" name="meeting_subject" value="{{ meeting.meeting_subject | default('') }}">
     <br>
     <label for="meeting_time">Meeting Time:</label>
-    <input type="text" name="meeting_time" value="{{ meeting.meeting_time | default('') }}">
+    <input type="datetime-local" name="meeting_time" value="{{ meeting.meeting_time | default('') }}">
     <br>
     <label for="location">Location:</label>
     <select name="location">
@@ -33,8 +33,8 @@
 
     input[type="text"],
     label,
-    input[type="submit"] 
-    {
+    input[type="submit"],
+    select {
       font-size: 15px;
       font-family: 'Courier New';
     }
