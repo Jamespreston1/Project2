@@ -52,9 +52,6 @@ def login():
             return render_template("login.html", error=request.args.get("error"))
         return render_template("login.html")
     
-
-
-
 # Second Attempt at signup route 
 
 @app.route("/signup", methods=['GET', 'POST'])
@@ -110,7 +107,7 @@ def logout():
 # New Meeting Add
 @app.route('/meetings/new', methods=["GET", "POST"])
 def meeting_form():
-    connection = psycopg2.connect(dbname='calendar',user = 'postgres',port=5433, password = 'Flugenhimen10!' )
+    connection = psycopg2.connect(dbname=os.getenv("DB_NAME"), user=os.getenv("DB_USER"), port=os.getenv("DB_PORT"), password=os.getenv("DB_PASSWORD"), host=os.getenv("DB_HOST"))
     cursor = connection.cursor()
     if request.method == "POST":
         owner_name = request.form["owner_name"]
@@ -137,7 +134,7 @@ def meeting_form():
 # Appointment View Page
 @app.route('/meetings')
 def test():
-    connection = psycopg2.connect(dbname='calendar',user = 'postgres',port=5433, password = 'Flugenhimen10!' )
+    connection = psycopg2.connect(dbname=os.getenv("DB_NAME"), user=os.getenv("DB_USER"), port=os.getenv("DB_PORT"), password=os.getenv("DB_PASSWORD"), host=os.getenv("DB_HOST"))
     cursor = connection.cursor()
 
     # get data from database
@@ -159,7 +156,7 @@ def test():
 # Edit Meeting View 
 @app.route('/meetings/edit/<int:id>', methods=['GET', 'POST'])
 def edit_meeting(id):
-    connection = psycopg2.connect(dbname='calendar',user = 'postgres',port=5433, password = 'Flugenhimen10!' )
+    connection = psycopg2.connect(dbname=os.getenv("DB_NAME"), user=os.getenv("DB_USER"), port=os.getenv("DB_PORT"), password=os.getenv("DB_PASSWORD"), host=os.getenv("DB_HOST"))
     cursor = connection.cursor()
     if request.method == 'POST':
         new_data = request.form
@@ -202,7 +199,7 @@ def edit_meeting(id):
 # Delete Meeting View 
 @app.route('/meetings/delete/<int:id>', methods=['GET'])
 def delete_meeting(id):
-    connection = psycopg2.connect(dbname='calendar',user = 'postgres',port=5433, password = 'Flugenhimen10!' )
+    connection = psycopg2.connect(dbname=os.getenv("DB_NAME"), user=os.getenv("DB_USER"), port=os.getenv("DB_PORT"), password=os.getenv("DB_PASSWORD"), host=os.getenv("DB_HOST"))
     cursor = connection.cursor() 
     # delete data from database
     
