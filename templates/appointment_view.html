@@ -2,72 +2,79 @@
 {% block title %} Home {% endblock %}
 
 {% block styles %}
+<style>
+    /* Add the CSS example here */
+    table, th, td {
+        border: 1px solid black;
+        padding: 10px;
+    }
 
+    h1 {
+        color: black;
+    }
+
+    body {
+        background-image: url("https://prod-upp-image-read.ft.com/ea6db1b4-bb15-11e7-bff8-f9946607a6ba");
+        background-size: cover;
+        font-family: 'Courier New';
+    }
+
+    .textbox {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-    <h1>Appointment View</h1>
-    
-    <div>
-        <label for="sort">Sort by:</label>
-        <select id="sort" onchange="sortTable()">
-            <option value="">Select</option>
-            <option value="owner_name">Owner Name</option>
-        </select>
+    <div class="textbox">
+        <h1>Appointment View</h1>
+        
+        <div>
+            <label for="sort">Sort by:</label>
+            <select id="sort" onchange="sortTable()">
+                <option value="">Select</option>
+                <option value="owner_name">Owner Name</option>
+            </select>
+        </div>
+
+        <table id="meeting_table">
+            <tr>
+                <th>Meeting Time</th>
+                <th>Owner Name</th>
+                <th>Meeting Subject</th>
+                <th>Location</th>
+                <th>Attendees</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>   
+            {% for meeting in meetings %} 
+            <tr>
+                <td>{{ meeting.Meeting_time }}</td>
+                <td>{{ meeting.Owner_name }}</td>
+                <td>{{ meeting.Meeting_subject }}</td>
+                <td>{{ meeting.Location }}</td>
+                <td>{{ meeting.Attendees }}</td>
+                <td><a href="/meetings/edit/{{ meeting.meeting_id }}">Edit</a></td>
+                <td><a href="/meetings/delete/{{ meeting.meeting_id }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 
-    <table id="meeting_table">
-        <tr>
-            <th>Meeting Time</th>
-            <th>Owner Name</th>
-            <th>Meeting Subject</th>
-            <th>Location</th>
-            <th>Attendees</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>   
-{% for meeting in meetings %} 
-<tr>
-    <td>{{ meeting.Meeting_time }}</td>
-    <td>{{ meeting.Owner_name }}</td>
-    <td>{{ meeting.Meeting_subject }}</td>
-    <td>{{ meeting.Location }}</td>
-    <td>{{ meeting.Attendees }}</td>
-    <td><a href="/meetings/edit/{{ meeting.meeting_id }}">Edit </a> </td>
-    <td><a href="/meetings/delete/{{ meeting.meeting_id }}">Delete </a> </td>
-</tr>
-{% endfor %}
-    
-</table>
-<style> 
-table, th, td {
-  border: 1px solid black;
-}
-
-th, td {
-  padding: 10px;
-}
-
-h1 {
-color: black;
-}
-
-body {
-background-color: aquamarine;
-font-family: 'Courier New';
-}
-</style>
-<script>
-function sortTable() {
-  const table = document.getElementById("meeting_table");
-  const rows = Array.from(table.rows).slice(1);
-  const sortBy = document.getElementById("sort").value;
-  if (sortBy === "owner_name") {
-    rows.sort((a, b) => a.cells[1].innerText.localeCompare(b.cells[1].innerText));
-  } else {
-    return;
-  }
-  table.tBodies[0].append(...rows);
-}
-</script>
+    <script>
+        function sortTable() {
+            const table = document.getElementById("meeting_table");
+            const rows = Array.from(table.rows).slice(1);
+            const sortBy = document.getElementById("sort").value;
+            if (sortBy === "owner_name") {
+                rows.sort((a, b) => a.cells[1].innerText.localeCompare(b.cells[1].innerText));
+            } else {
+                return;
+            }
+            table.tBodies[0].append(...rows);
+        }
+    </script>
 {% endblock %}
