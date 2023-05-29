@@ -1,9 +1,38 @@
-{%extends "base.html"%}
-{%block title%}New Appointment{%endblock%}
+{% extends "base.html" %}
+{% block title %} New Appointment {% endblock %}
 
-{%block content%}
-  <form action="/meetings/edit/{{meeting.meeting_id}}" method="POST">
-   
+{% block styles %}
+<style>
+    /* Add the CSS example here */
+    body {
+        background-image: url("https://prod-upp-image-read.ft.com/ea6db1b4-bb15-11e7-bff8-f9946607a6ba");
+        background-size: cover;
+        font-family: 'Courier New';
+    }
+
+    h1 {
+        color: black;
+    }
+    
+    form {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input {
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<form action="/meetings/edit/{{meeting.meeting_id}}" method="POST">
     <label for="owner_name">Owner Name:</label>
     <input type="text" name="owner_name" value="{{ meeting.Owner_name | default('') }}">
     <br>
@@ -20,16 +49,5 @@
     <input type="text" name="attendees" value="{{ meeting.Attendees | default('') }}">
     <br>
     <input type="submit" value="Update Meeting">
-  </form>
-
-  <style> 
-    h1 {
-    color: black;
-    }
-    
-    body {
-    background-color: aquamarine;
-    font-family: 'Courier New';
-    }
-    </style>
-  {% endblock %}
+</form>
+{% endblock %}

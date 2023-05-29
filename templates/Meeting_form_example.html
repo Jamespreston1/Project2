@@ -2,7 +2,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <form method = "POST" action = "/meeting_form">
+  <form method="POST" action="/meeting_form">
     <label for="owner_name">Owner Name:</label>
     <input type="text" id="owner_name" name="owner_name">
     <br><br>
@@ -17,11 +17,11 @@
 
     <label for="location">Location:</label>
     <select id="location" name="location">
-      <option value="Meeting 1">Meeting 1</option>
-      <option value="Meeting 2">Meeting 2</option>
-      <option value="Meeting 3">Meeting 3</option>
-      <option value="Meeting 4">Meeting 4</option>
-      <option value="Meeting 5">Meeting 5</option>
+      <option value="Meeting Room 1">Meeting Room 1</option>
+      <option value="Meeting Room 2">Meeting Room 2</option>
+      <option value="Meeting Room 3">Meeting Room 3</option>
+      <option value="Meeting Room 4">Meeting Room 4</option>
+      <option value="Meeting Room 5">Meeting Room 5</option>
     </select>
     <br><br>
 
@@ -35,8 +35,7 @@
   <style>
     /* Internal Style Sheet */
     form {
-		background-color: aquamarine;
-
-	}
+      background-color: aquamarine;
+    }
   </style>
 {% endblock %}
