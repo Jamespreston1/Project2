@@ -4,9 +4,19 @@
 {% block styles %}
 <style>
     /* Add the CSS example here */
-    table, th, td {
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
         border: 1px solid black;
         padding: 10px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
     }
 
     h1 {
@@ -41,26 +51,30 @@
         </div>
 
         <table id="meeting_table">
-            <tr>
-                <th>Meeting Time</th>
-                <th>Owner Name</th>
-                <th>Meeting Subject</th>
-                <th>Location</th>
-                <th>Attendees</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>   
-            {% for meeting in meetings %} 
-            <tr>
-                <td>{{ meeting.Meeting_time }}</td>
-                <td>{{ meeting.Owner_name }}</td>
-                <td>{{ meeting.Meeting_subject }}</td>
-                <td>{{ meeting.Location }}</td>
-                <td>{{ meeting.Attendees }}</td>
-                <td><a href="/meetings/edit/{{ meeting.meeting_id }}">Edit</a></td>
-                <td><a href="/meetings/delete/{{ meeting.meeting_id }}">Delete</a></td>
-            </tr>
-            {% endfor %}
+            <thead>
+                <tr>
+                    <th>Meeting Time</th>
+                    <th>Owner Name</th>
+                    <th>Meeting Subject</th>
+                    <th>Location</th>
+                    <th>Attendees</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for meeting in meetings %}
+                <tr>
+                    <td>{{ meeting.Meeting_time }}</td>
+                    <td>{{ meeting.Owner_name }}</td>
+                    <td>{{ meeting.Meeting_subject }}</td>
+                    <td>{{ meeting.Location }}</td>
+                    <td>{{ meeting.Attendees }}</td>
+                    <td><a href="/meetings/edit/{{ meeting.meeting_id }}">Edit</a></td>
+                    <td><a href="/meetings/delete/{{ meeting.meeting_id }}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 
