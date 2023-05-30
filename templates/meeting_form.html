@@ -10,19 +10,10 @@
         font-family: 'Courier New';
     }
 
-    input[type="text"],
-    label,
-    input[type="submit"],
-    select {
-        font-size: 15px;
-        font-family: 'Courier New';
+    h1 {
+        color: black;
     }
-
-    p {
-        font-size: 15px;
-        font-family: 'Courier New';
-    }
-
+    
     form {
         background-color: rgba(255, 255, 255, 0.8);
         padding: 20px;
@@ -34,25 +25,40 @@
         margin-bottom: 10px;
     }
 
-    input {
+    input, select {
         margin-bottom: 10px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<form action="/meetings/new" method="POST">
+<form action="/meetings/edit/{{meeting.meeting_id}}" method="POST">
     <label for="owner_name">Owner Name:</label>
-    <input type="text" name="owner_name" value="{{ meeting.owner_name | default('') }}">
+    <input type="text" name="owner_name" value="{{ meeting.Owner_name | default('') }}">
     <br>
     <label for="meeting_subject">Meeting Subject:</label>
-    <input type="text" name="meeting_subject" value="{{ meeting.meeting_subject | default('') }}">
+    <input type="text" name="meeting_subject" value="{{ meeting.Meeting_subject | default('') }}">
     <br>
     <label for="meeting_time">Meeting Time:</label>
     <input type="datetime-local" name="meeting_time" value="{{ meeting.meeting_time | default('') }}">
     <br>
     <label for="location">Location:</label>
     <select name="location">
+        <option value="">Select Location</option>
         <option value="Meeting Room 1">Meeting Room 1</option>
         <option value="Meeting Room 2">Meeting Room 2</option>
         <option value="Meeting Room 3">Meeting Room 3</option>
@@ -61,9 +67,8 @@
     </select>
     <br>
     <label for="attendees">Attendees:</label>
-    <input type="text" name="attendees" value="{{ meeting.attendees | default('') }}">
+    <input type="text" name="attendees" value="{{ meeting.Attendees | default('') }}">
     <br>
     <input type="submit" value="Update Meeting">
 </form>
-<p><em>After you hit 'Update Meeting', you'll be redirected back to the home page!</em></p>
 {% endblock %}
