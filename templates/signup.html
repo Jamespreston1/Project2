@@ -2,37 +2,69 @@
 {% block title %} Home {% endblock %}
 
 {% block styles %}
+<style>
+    /* Add the CSS example here */
+    body {
+        background-image: url("https://prod-upp-image-read.ft.com/ea6db1b4-bb15-11e7-bff8-f9946607a6ba");
+        background-size: cover;
+        font-family: 'Courier New';
+    }
 
+    h2 {
+        color: black;
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input, select {
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 <body>
-    <h2>Signup Form</h2>
-    <form method="POST">
-        <label for="first_name">First Name</label><br>
-        <input id="first_name" type="text" name="first_name" required><br>
-        <label for="last_name">Last Name</label><br>
-        <input id="last_name" type="text" name="last_name" required><br>
-        <label for="email">Email</label><br>
-        <input id="email" type="email" name="email" required><br>
-        <label for="password">Password</label><br>
-        <input id="password" type="password" name="password" required><br>
-        <label for="confirm_password">Confirm Password</label><br>
-        <input id="confirm_password" type="password" name="confirm_password" required><br>
-        <input type="submit" value="Signup">
-    </form>
+    <div class="textbox">
+        <h2>Signup Form</h2>
+        <form method="POST">
+            <label for="first_name">First Name</label><br>
+            <input id="first_name" type="text" name="first_name" required><br>
+            <label for="last_name">Last Name</label><br>
+            <input id="last_name" type="text" name="last_name" required><br>
+            <label for="email">Email</label><br>
+            <input id="email" type="email" name="email" required><br>
+            <label for="password">Password</label><br>
+            <input id="password" type="password" name="password" required><br>
+            <label for="confirm_password">Confirm Password</label><br>
+            <input id="confirm_password" type="password" name="confirm_password" required><br>
+            <input type="submit" value="Signup">
+        </form>
+    </div>
 </body>
-
-<style>
-
-body {
-    background-color: turquoise;
-}
-
-</style>
 {% endblock %}
-
-
 
 
 
